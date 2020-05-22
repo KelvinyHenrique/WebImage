@@ -9,8 +9,8 @@
 <body>
 
     <div class="container">
-        <form class="formImage" action="./assets/php/main.php" method="post" enctype="multipart/form-data">      
-        <input type="file" name="image" id="file" class="inputfile" />
+        <form class="formImage" action="./assets/php/upload.php" method="post" enctype="multipart/form-data">      
+        <input type="file" name="userfile" id="file" class="inputfile" />
         <label for="file">Escolha um arquivo</label>     
         
         <div>
