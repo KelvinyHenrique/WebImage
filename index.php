@@ -18,7 +18,10 @@
         </div>
 
         <div>
-            <input type="number" placeholder="Informe a largura da imagem" name="width">
+            <input   type="number" placeholder="Informe a largura da imagem" name="width">
+            <input type="number" placeholder="Informe a altura da imagem" name="height">
+            <input type="number" placeholder="Informe a altura da imagem" name="height">
+
             <input type="number" placeholder="Informe a altura da imagem" name="height">
         </div>
         </form>
