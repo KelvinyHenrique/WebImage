@@ -9,8 +9,8 @@
 <body>
 
     <div class="container">
-        <form class="formImage" action="./assets/php/main.php" method="post" enctype="multipart/form-data">      
-        <input type="file" name="image" id="file" class="inputfile" />
+        <form class="formImage" action="./assets/php/cortarImg.php" method="post" enctype="multipart/form-data">      
+        <input type="file" name="image[]" multiple="multiple" id="file" class="inputfile" />
         <label for="file">Escolha um arquivo</label>     
         
         <div>
@@ -18,8 +18,8 @@
         </div>
 
         <div>
-            <input type="number" placeholder="Informe a largura da imagem" name="width">
-            <input type="number" placeholder="Informe a altura da imagem" name="height">
+            <input class="input" type="number" placeholder="Largura" name="width">
+            <input class="input" type="number" placeholder="Altura" name="height">
         </div>
         </form>
     </div>
