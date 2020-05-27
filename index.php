@@ -3,38 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Crop</title>
+    <title>WebImage</title>
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-
     <div class="container">
-<<<<<<< HEAD
-        <form class="formImage" action="./assets/php/cortarImg.php" method="post" enctype="multipart/form-data">      
-        <input type="file" name="image[]" multiple="multiple" id="file" class="inputfile" />
-=======
-        <form class="formImage" action="./assets/php/upload.php" method="post" enctype="multipart/form-data">      
-        <input type="file" name="userfile" id="file" class="inputfile" />
->>>>>>> b9576ba6c71d95933666f73d11957b3db15f7ad6
-        <label for="file">Escolha um arquivo</label>     
-        
-        <div>
-            <button class="btnEnviar" type="submit">Enviar</button>
+    <nav class="navbar">
+        <h1>WebImage</h1>
+        <button> <a href="dashboard.html">Fazer Upload</a></button>
+    </nav>
+    </div>
+    <div class="container">
+        <div class="imgContainer">
+      <?php
+        $path = "images/";
+        $diretorio = dir($path);
+        while($arquivo = $diretorio -> read()){
+            if ($arquivo != "." && $arquivo != "..") {
+                echo "<img src=".$path.$arquivo." />";
+            }
+        }
+        $diretorio -> close();
+        ?>
         </div>
-
-        <div>
-<<<<<<< HEAD
-            <input class="input" type="number" placeholder="Largura" name="width">
-            <input class="input" type="number" placeholder="Altura" name="height">
-=======
-            <input   type="number" placeholder="Informe a largura da imagem" name="width">
-            <input type="number" placeholder="Informe a altura da imagem" name="height">
-            <input type="number" placeholder="Informe a altura da imagem" name="height">
-
-            <input type="number" placeholder="Informe a altura da imagem" name="height">
->>>>>>> b9576ba6c71d95933666f73d11957b3db15f7ad6
-        </div>
-        </form>
+      
     </div>
 
 </body>

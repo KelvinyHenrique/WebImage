@@ -34,17 +34,32 @@
             
                         if(isset($_FILES['image']['name'][$key]) && $_FILES['image']['size'][$key] >= 0) {
                             
+                            $extencao = $_FILES['image']['type'][$key];
                             $name = $_FILES['image']['name'][$key];
                             $tmp_name = $_FILES['image']['tmp_name'][$key];
-            
+                            
                             $NewImageName = Rand(7,10000).".png";
                             $destination = realpath('../../images').'/';
-                            move_uploaded_file($tmp_name, $destination.$NewImageName);
-                            $image = imagecreatefromjpeg($destination.$NewImageName);
+                            switch ($extencao) {
+                                case 'image/jpeg':
+                                    move_uploaded_file($tmp_name, $destination.$NewImageName);
+                                    $image = imagecreatefromjpeg($destination.$NewImageName);
+                                    break;
+                                
+                                case 'image/png':
+                                    move_uploaded_file($tmp_name, $destination.$NewImageName);
+                                    $image = imagecreatefrompng($destination.$NewImageName);
+                                    break;
+                                    
+                                default:
+                                   header("Location: ../../dashboard.html");
+                                    break;
+                            }
+
                             $filename = $destination.$NewImageName;
                         
-                            $thumb_width = 200;
-                            $thumb_height = 150;
+                            $thumb_width = $_POST['width'];
+                            $thumb_height = $_POST['height'];
                         
                             $width = imagesx($image);
                             $height = imagesy($image);
@@ -75,18 +90,31 @@
                                                0, 0,
                                                $new_width, $new_height,
                                                $width, $height);
-                            imagejpeg($thumb, $filename, 80);
-                            echo "cropped";
-            
                             
-            
-                        }
+                                               switch ($extencao) {
+                                                case 'image/jpeg':
+                                                     imagejpeg($thumb, $filename, 80); 
+                                                    break;
+                                                
+                                                case 'image/png':
+                                                    imagepng($thumb, $filename, 9); 
+                                                    break;
+                                                    
+                                                default:
+                                                   header("Location: ../../dashboard.html");
+                                                    break;
+                                            }
+                           
+                            
+                            
+                        //aqui
+                    }
                         
                     }
                         
-                    }          
-        }
-        
+                    }    
+                    
+                    return $extencao;
+        }   
     }
-
 ?>
